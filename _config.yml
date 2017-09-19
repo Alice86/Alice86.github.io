@@ -1,27 +1,27 @@
 # Site settings
-title: Rokia's Git Site
+title: STAT Lab @JW
 header-img: "img/meditations_1.jpg"
 tagline: "cn"  
-description: "rokia"  
+description: "Jizyu WU | Study Notes"  
 baseurl: ""
-url: "http://zhichaoluo.github.io"  
+url: "http://jiayuwu.github.io"  
 
 # About/contact
 owner: 
   name: " zhichaoluo"
-  email: "1814347@qq.com"
-  bio: "数据科学爱好者，主要兴趣为数据分析、数据挖掘、R语言开发、量化投资、电力营销数据分析。"
+  email: "wujiayu86@outlook.com"
+  bio: "Statistics Learner, BS&BA in XMU - MS in UCLA"
 
 # Data
 gavatar: http://dreamofbook.qiniudn.com/Az..png
 favicon: img/favicon.png
 
-douban_username:  
+#douban_username:  
 #twitter_username: 
-github_username: zhichaoluo
-#facebook_username: 
+github_username: JiayuWu
+facebook_username: Jiayu Wu
 #weibo_username: 
-zhihu_username: 
+#zhihu_username: 
 
 # Build settings  
 # use Github Flavored Markdown !important  
@@ -43,8 +43,8 @@ defaults:
       type: "posts"
     values:
       layout: "post"
-      author: "rokia"
-      header-img: "img/green.jpg" # We don't want posts without a header image, that whould mean white on white
+      author: "jiayuwu"
+      header-img: "img/blue.jpg" # We don't want posts without a header image, that whould mean white on white
 
 # Comments 
 comments :
