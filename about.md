@@ -2,7 +2,7 @@
 layout: page
 title: "About Me"
 description: "jiayuwu"
-header-img: "img/"
+header-img: "img/blue.jpg"
 ---
 
 <center>
