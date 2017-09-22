@@ -2,7 +2,7 @@
 title: "Preface"
 author: "Jiayu Wu"
 date: "2017/9/21"
-output: html_document
+output: md_document
 ---
 
 ```{r setup, include=FALSE}

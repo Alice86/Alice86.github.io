@@ -1,8 +1,8 @@
 # Site settings
 title: STAT Lab @JW
-header-img: "img/meditations_1.jpg"
+header-img: "img/cover.jpg"
 tagline: "cn"  
-description: "Jiayu WU | Study Notes"  
+description: "Jiayu WU | Exploration and Notes"  
 baseurl: ""
 url: "http://alice86.github.io"  
 
