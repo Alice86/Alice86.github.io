@@ -24,7 +24,7 @@ Even before I realize, my utilitarian decision became a serious choice for my pr
 It's my second week in LA and last night I met most of my classmates. They are so outstanding that I was wondering why it is even possible for me to be a part of this community. I feel exiting and proud, also pressured. 
 
 I am determined to get on with the journey, and I set up this blog to record my gains and progress, to motivate further and countinuous effort, and to communicate with other learners.   
-To start with, I am reviewing and consolidate R programming by reading through Advanced R by Hadley Wickmen. "Notes on R" will be my first series.
+To start with, I am reviewing and consolidate R programming by reading through Advanced R by Hadley Wickmen. "Notes on R" will be the first series on this blog.
 
 Jiayu Wu
 Sep.21, 2017 Los Angeles
