@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "About Me"
-description: "jiayuwu"
+description: "Jiayu Wu"
 header-img: "img/About me.JPG"
 ---
 
