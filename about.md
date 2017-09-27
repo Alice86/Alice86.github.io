@@ -14,10 +14,10 @@ Jiayu Wu 伍佳昱
 Statisics and data science learner, interested in multivariate analysis and data mining with R.
 
 Birth: 07/31/1995, Nanchang, Jiangxi, China  
-E-mail: wujiayu86@outlook.com / jiayuwu@ucla.edu
+E-mail: wujiayu86@outlook.com / jiayuwu@ucla.edu   
 Github: https://github.com/Alice86
 
-09/2017 ——            Master of Science in statistics                          UCLA  
+09/2017 ——  now       Master of Science in statistics                          UCLA  
 
 09/2014 —— 07/2017    Bachelor of Economics in Mathematical Statistics         XMU-WISE  
 ·Thesis: 中国省域电子商务发展规模及其影响因素 Provincial Development of Chinese E-commerce
