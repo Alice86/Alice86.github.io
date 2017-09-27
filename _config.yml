@@ -8,7 +8,7 @@ url: "http://alice86.github.io"
 
 # About/contact
 owner: 
-  name: " zhichaoluo"
+  name: "jiayuwu"
   email: "wujiayu86@outlook.com"
   bio: "Statistics Learner, BS&BA in XMU - MS in UCLA"
 
@@ -18,7 +18,7 @@ favicon: img/favicon.png
 
 #douban_username:  
 #twitter_username: 
-github_username: JiayuWu
+github_username: ALice86
 facebook_username: Jiayu Wu
 #weibo_username: 
 #zhihu_username: 
@@ -61,3 +61,12 @@ google_verify:
 bing_verify:
 
 # Links to include in footer navigation
+footer-links-active:
+  rss: true
+  zhihu: false
+  facebook: false
+  email: true
+  twitter: false
+  github: true
+  linkedin: false
+  stackoverflow: false
