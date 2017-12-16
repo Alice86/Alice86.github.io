@@ -11,7 +11,8 @@ header-img: "img/About me.JPG"
 
 Jiayu (Alice) Wu 伍佳昱
 
-Statisics and data science learner, interested in multivariate analysis and data mining.     Programming primarily with R, Python, Rcpp.
+Statisics and data science learner, interested in multivariate analysis and data mining.       
+Programming primarily with R, Python, Rcpp.
 
 E-mail: wujiayu86@outlook.com / jiayuwu@ucla.edu   
 Github: https://github.com/Alice86
@@ -34,13 +35,13 @@ with Related Factors
 
 
 **Researches**     
+*Opening Strategy of Gated Neighborhood Based on Urban Traffic Network Evaluating Index* (CUMCM Contest, Problem B: the opening of gated neighborhood and its influence on traffic capacity), 2016(10), with Hui Ma, Sijia Li.      
+· Built performance evaluating model with capacity and efficiency indexes based on graph theory system      
+· Discussed system changes with traffic assignment model to evaluate the performances with matlab      
 *Behavioral Patterns of Sina Microblog On-line Celebrities* (Data Mining Coursework)         May 2016       
 · Crawled 4304 microblog posts by 20 on-line celebrities with 10 features       
 · Visualized and analyzed famous bloggers’ posting behaviors, popularity and relationship network with R       
 · Conducted textual analysis in terms of words frequency, words correlation and sentiment tendency with software Rost   
-*Opening Strategy of Gated Neighborhood Based on Urban Traffic Network Evaluating Index* (CUMCM Contest, Problem B: the opening of gated neighborhood and its influence on traffic capacity), 2016(10), with Hui Ma, Sijia Li.      
-· Built performance evaluating model with capacity and efficiency indexes based on graph theory system      
-· Discussed system changes with traffic assignment model to evaluate the performances with matlab      
 
 
 **Publications**    
@@ -51,10 +52,10 @@ with Related Factors
 **Working Experience**        
 06/2016-07/2016   ICBC Bills Discounting, Information Management Dept., Shanghai  
 · Cleaned financial and industrial data of January to June in 2016 for maintenance of internal database     
-· Studied and summarized annual statistical report on macro-economy of 31 regions for briefing to all staff     
+· Studied and summarized annual statistical report on macro-economy of 31 regions for briefing to staff     
 · Wrote market analysis on the establishment of the National Paper Exchange for national publications       
 08/2015-09/2015   CCPIT Xiamen (CIFIT Committee), International Relations Dept., Xiamen  
-· Assisted organization of the 14th World Business Leader Roundtable themed on cross-border e-commerce     
+· Assisted organization of the 14th World Business Leader Roundtable on cross-border e-commerce     
 · Contacted and arranged reception for VIPs from Alibaba, Amazon, Google, Paypal, OTTO, etc.     
 · Led and trained a group of 12 volunteers for reception and liaison of guests      
 
