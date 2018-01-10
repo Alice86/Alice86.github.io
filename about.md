@@ -24,14 +24,14 @@ Location: Los Angeles, California 90025
 
 09/2014 —— 07/2017    **Bachelor of Economics in Mathematical Statistics**    XMU-WISE  
 **Thesis** 中国省域电子商务发展规模及其影响因素 Provincial Development of Chinese E-commerce
-with Related Factors  
-· Visualized and analyzed geographical distribution of e-commerce development based on provincial sales data      
+with Related Factors       
+· Visualized and analyzed geographical distribution of e-commerce development based on provincial sales data            
 · Built Principal Component Analysis and Regression model for data of 31 regions with 12 features using R     
 
 09/2013 —— 07/2017    **Bachelor of Art in English**                          XMU-CFLC   
-**Thesis** Pauses in Chinese-English Consecutive Interpreting by Novice Learners 口译初学者汉英交替传译中的停顿
-· Collected 244 observations of pauses with 7 features from simulated interpreting experiments     
-· Analyzed features and causes of typical pauses and discussed major challenges for interpreting learners      
+**Thesis** Pauses in Chinese-English Consecutive Interpreting by Novice Learners 口译初学者汉英交替传译中的停顿        
+· Collected 244 observations of pauses with 7 features from simulated interpreting experiments       
+· Analyzed features and causes of typical pauses and discussed major challenges for interpreting learners        
 
 
 **Researches**     
