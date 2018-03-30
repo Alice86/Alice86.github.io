@@ -11,13 +11,13 @@ header-img: "img/About me.JPG"
 
 Jiayu (Alice) Wu 伍佳昱
 
-Statisics and data science learner, interested in multivariate analysis and data mining.       
-Programming primarily with R, Python, Rcpp.
+Statisics and data science learner, interested in multivariate analysis and statistical learning.               
+Programming primarily with R and Python (tensorflow, pytorch).
 
 E-mail: wujiayu86@outlook.com / jiayuwu@ucla.edu   
 Github: https://github.com/Alice86
 LinkedIn: https://www.linkedin.com/in/alice-wu-170146139/     
-Birth: 07/31/1995, Nanchang, China    
+Birth: 07/31/1995, China    
 Location: Los Angeles, California 90025 
 
 09/2017 —— 06/2019    **Master of Science in Statistics**                     UCLA  
@@ -31,17 +31,27 @@ with Related Factors
 09/2013 —— 07/2017    **Bachelor of Art in English**                          XMU-CFLC   
 **Thesis** Pauses in Chinese-English Consecutive Interpreting by Novice Learners 口译初学者汉英交替传译中的停顿        
 · Collected 244 observations of pauses with 7 features from simulated interpreting experiments       
-· Analyzed features and causes of typical pauses and discussed major challenges for interpreting learners        
+· Analyzed features and causes of typical pauses and discussed major challenges for interpreting learners      
 
 
-**Researches**     
+**Researches**    
+*Gender Difference in Movie Genre Preferences – factor analysis on ordinal data* (independent), Mar. 2018
+· Applied polychoric factor analysis and nonlinear factor analysis on survey data with 10 features and 955 observations         
+· Identified two latent factors of preferences over the storyline and over the scene to discuss gender difference        
+· Compared different approaches for factor analysis with ordinal manifest variables both theoretically and empirically 
+
+*Research on Neyman-Pearson (NP) Classification Algorithms* (group work), Mar. 2018
+· Discussed three approaches to control type I error in binary classification applications with simulation experiments
+· Applied NP classification algorithm on a real worlds dataset to achieve a testing accuracy 0.2 higher than the naïve method
+
+*Behavioral Patterns of Sina Microblog On-line Celebrities* (groupb work), May 2016       
+· Crawled over 7000 microblog posts by 50 on-line celebrities with 10 features        
+· Visualized and analyzed famous bloggers’ posting behaviors, popularity and relationship network with R       
+· Conducted textual analysis in terms of words frequency, words correlation and sentiment tendency with software Rost         
+
 *Opening Strategy of Gated Neighborhood Based on Urban Traffic Network Evaluating Index* (CUMCM Contest, Problem B: the opening of gated neighborhood and its influence on traffic capacity), 2016(10), with Hui Ma, Sijia Li.      
 · Built performance evaluating model with capacity and efficiency indexes based on graph theory system      
-· Discussed system changes with traffic assignment model to evaluate the performances with matlab      
-*Behavioral Patterns of Sina Microblog On-line Celebrities* (Data Mining Coursework)         May 2016       
-· Crawled 4304 microblog posts by 20 on-line celebrities with 10 features       
-· Visualized and analyzed famous bloggers’ posting behaviors, popularity and relationship network with R       
-· Conducted textual analysis in terms of words frequency, words correlation and sentiment tendency with software Rost   
+· Discussed system changes with traffic assignment model to evaluate the performances with matlab 
 
 
 **Publications**    
