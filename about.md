@@ -18,39 +18,44 @@ E-mail: wujiayu86@outlook.com / jiayuwu@ucla.edu
 Github: https://github.com/Alice86
 LinkedIn: https://www.linkedin.com/in/alice-wu-170146139/     
 Birth: 07/31/1995, China    
-Location: Los Angeles, California 90025 
+Location: Los Angeles, California 90095 
 
-09/2017 —— 06/2019    **Master of Science in Statistics**                     UCLA  
+09/2017 —— 06/2019    **Master of Science in Statistics** \qquad  GPA: 4.0  \qquad    UCLA  
 
-09/2014 —— 07/2017    **Bachelor of Economics in Mathematical Statistics**    XMU-WISE  
+09/2014 —— 07/2017    **Bachelor of Economics in Mathematical Statistics**   \qquad GPA: 3.91 Rank:1/21  \qquad  XMU-WISE  
 **Thesis** 中国省域电子商务发展规模及其影响因素 Provincial Development of Chinese E-commerce
 with Related Factors       
-· Visualized and analyzed geographical distribution of e-commerce development based on provincial sales data            
-· Built Principal Component Analysis and Regression model for data of 31 regions with 12 features using R     
+· Principal Component Analysis and Regression on e-commerce development of 31 regions with 12 features in China
 
-09/2013 —— 07/2017    **Bachelor of Art in English**                          XMU-CFLC   
+
+09/2013 —— 07/2017    **Bachelor of Art in English**   \qquad GPA: 3.84     \qquad     XMU-CFLC   
 **Thesis** Pauses in Chinese-English Consecutive Interpreting by Novice Learners 口译初学者汉英交替传译中的停顿        
-· Collected 244 observations of pauses with 7 features from simulated interpreting experiments       
-· Analyzed features and causes of typical pauses and discussed major challenges for interpreting learners      
+· Analyzed features and causes of typical pauses and discussed major challenges for interpreting learners with 244 observations of pauses from simulated interpreting experiments
 
 
-**Researches**    
-*Gender Difference in Movie Genre Preferences – factor analysis on ordinal data* (independent), Mar. 2018
+**Researches**
+
+*Research on Deep Learning Methods with Application in Vision and Cognition*, Jan. – Mar. 2018
+· Built deep neural networks (fully-connected, convolutional, residual net) with Python (numpy) for image classification       
+· Applied reinforcement learning (DQN) on CartPole balancing game with Python (pytorch)       
+· Trained generative models (VAE, DCGAN, Generator and Descriptor Net) for images with Python (tensorflow)       
+[Github Directory](https://github.com/Alice86/232-Intro_to_CV)
+
+*Gender Difference in Movie Genre Preferences – factor analysis on ordinal data*, Mar. 2018
 · Applied polychoric factor analysis and nonlinear factor analysis on survey data with 10 features and 955 observations         
 · Identified two latent factors of preferences over the storyline and over the scene to discuss gender difference        
-· Compared different approaches for factor analysis with ordinal manifest variables both theoretically and empirically 
+· Compared different approaches for factor analysis with ordinal manifest variables both theoretically and empirically        
+[Project Report](https://github.com/Alice86/Multivariate_Analysis/blob/master/Gender%20Difference%20in%20Movie%20Genre%20Preferences%20Factor%20Analysis%20on%20Ordinal%20Data%20-%2003:2018.pdf)
 
 *Research on Neyman-Pearson (NP) Classification Algorithms* (group work), Mar. 2018
 · Discussed three approaches to control type I error in binary classification applications with simulation experiments
 · Applied NP classification algorithm on a real worlds dataset to achieve a testing accuracy 0.2 higher than the naïve method
 
 *Behavioral Patterns of Sina Microblog On-line Celebrities* (groupb work), May 2016       
-· Crawled over 7000 microblog posts by 50 on-line celebrities with 10 features        
-· Visualized and analyzed famous bloggers’ posting behaviors, popularity and relationship network with R       
-· Conducted textual analysis in terms of words frequency, words correlation and sentiment tendency with software Rost         
+· Discussed the relationship between posting behaviors (time, keywords, sentiments, etc) and popularity based on 7000 microblog posts by 50 on-line celebrities with 10 features        
 
-*Opening Strategy of Gated Neighborhood Based on Urban Traffic Network Evaluating Index* (CUMCM Contest, Problem B: the opening of gated neighborhood and its influence on traffic capacity), 2016(10), with Hui Ma, Sijia Li.      
-· Built performance evaluating model with capacity and efficiency indexes based on graph theory system      
+*Opening Strategy of Gated Neighborhood Based on Urban Traffic Network Evaluating Index* (CUMCM Contest, Problem B: the opening of gated neighborhood and its influence on traffic capacity), 2016(10), with Hui Ma, Sijia Li.            
+· Built performance evaluating model with capacity and efficiency indexes based on graph theory system        
 · Discussed system changes with traffic assignment model to evaluate the performances with matlab 
 
 
@@ -66,13 +71,15 @@ with Related Factors
 · Wrote market analysis on the establishment of the National Paper Exchange for national publications       
 08/2015-09/2015   CCPIT Xiamen (CIFIT Committee), International Relations Dept., Xiamen  
 · Assisted organization of the 14th World Business Leader Roundtable on cross-border e-commerce     
-· Contacted and arranged reception for VIPs from Alibaba, Amazon, Google, Paypal, OTTO, etc.     
-· Led and trained a group of 12 volunteers for reception and liaison of guests      
+· Contacted and arranged reception for VIPs from Alibaba, Amazon, Google, Paypal, OTTO, etc.       
+· Led and trained a group of 12 volunteers for reception and liaison of guests        
 
 **Awards**  
 CUMUM 1st Prize of Fujian Division (2016)    
 National Scholarship (Ministry of Education, 2016)   
 1st Prize Academic Scholarship (XMU, 2015, 2014)   
-Excellent Graduate (XMU, 2017)     
-Dean’s Honor Awards (CFLC, 2016)    
+Excellent Graduate (XMU, 2017)       
+Excellent Merit Student (XMU, 2016, 2015, 2014)        
 Dean’s List Awards (WISE, 2016, 2015)    
+Dean’s List Awards (CFLC, 2016)    
+
