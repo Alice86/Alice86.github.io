@@ -11775,71 +11775,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Kernel-Regression-and-Kernal-SVM-in-Python">Kernel Regression and Kernal SVM in Python<a class="anchor-link" href="#Kernel-Regression-and-Kernal-SVM-in-Python">&#182;</a></h1><h2 id="Kernel-(gaussian)-Regression">Kernel (gaussian) Regression<a class="anchor-link" href="#Kernel-(gaussian)-Regression">&#182;</a></h2><h3 id="Derivation">Derivation<a class="anchor-link" href="#Derivation">&#182;</a></h3><p>\begin{align*}
-\text{Minimize the loss: }&amp; \\
-\frac{\partial L(\beta)}{\partial \beta} &amp;= -2X^T(Y-X\beta)+2\lambda\beta = 0 \\
-&amp; \Rightarrow \hat{\beta}_{ridge} = (X^TX+\lambda I_p)^{-1}X^TY =  X^T(XX^T+\lambda I_n)^{-1}Y\\
-\text{Representer: } \hat{\beta}_{ridge} &amp;= X^T(\langle X, X^T\rangle-\lambda I_n)^{-1}Y\\
-    &amp;=  X^TC_{(n \times 1)} = \sum_{j=1}^nc_jX_j, \quad C = (XX^T+\lambda I_n)^{-1}Y \\
-\text{Kernel trick: }&amp; \\
-f(x) &amp;= h(X)^T\beta = \sum_{k=1}^d\beta_kh_k(X) \\
-&amp; \quad \text{where } \beta_k \text{ are implicit parameters of a nonparametric function so } d=\infty\\
-L(\beta) &amp;= |Y - h(X)\beta|^2 + \lambda |\beta|^2 \\
-&amp; \Rightarrow \hat{\beta}_{kernel} = (h(X)^Th(X)+\lambda I_d)^{-1}h(X)^TY =  h(X)^T(h(X)h(X)^T-\lambda I_n)^{-1}Y \\
-&amp; \quad \text{the first expression is not solvable due to infinite dimension while the second is } n \times n \\
-\therefore \hat{\beta}_{kernel} &amp;= \sum_{j=1}^n c_j h(X_j), \quad C = (\langle h(X), h(X)\rangle + \lambda I_n)^{-1}Y  = (K(X, X)+ \lambda I_n)^{-1}Y \\
-\text{Estimation: }&amp; \\
-\hat{f}(x) &amp;= h(x)^T\sum_{j=1}^nc_jh(X_j) =  \sum_{j=1}^n c_j K(X_j, x) \\
-\end{align*}</p>
-<h3 id="Experiment">Experiment<a class="anchor-link" href="#Experiment">&#182;</a></h3><p>Python code for gaussian kernel regession is attached below. 100 training observations and 100 testing examples are generated from $y = x_1^2+x_2^2+\epsilon, x \in [0,1]^2, \epsilon \sim N(0,0.1)$.</p>
-<p>Firstly, we experiment with a set of 100 $\lambda$s equally spaced within $(0,2]$, using gaussian kernel $exp(-7|x-x'|^2)$. The training error and testing error is displayed in Figure 1-1. It can be observed that testing error is always higher than that of training. As the amount of penalty $\lambda$ increase, training error keeps increasing, while the testing error decrease and than increase. It indicates that too small $\lambda$ leads to overfitting and too large $\lambda$ leads to underfit, thus there is a bias-variance tradeoff in finding an optimal amount of penalty.
-<img src="1-1.png" alt="Figure 1-1"></p>
-<p>Then, we try different $\gamma$s for the gaussian kernel $exp(-\gamma|x-x'|^2)$, corresponsing training errors and testing errors are displayed in Figure 1-2. For a set of kernels, we plot the learned f(x) in Figure 1-3 as hypersurfaces, and the white surface is the true $f(x)$ from which we generates the training data. 
-<img src="1-2.png" alt="Figure 1-2">
-<img src="1-3.png" alt="Figure 1-3">
-For different $\gamma$s, the behavior of testing and training error over against increasing $\lambda$s is similar to that in Figure 1-1, and an ideal $\lambda$ should be around 1. Moreover, as $\gamma$ increases, the distance/dissimilarity measure of the two points is larger, and the hypersurface is more spiky. Either too large or too small $\gamma$ leads to poor performance. In this case, $\gamma=8$ yields the smallest testing error while a smaller $\gamma$ is closer to theoriginal function. It indicates that the learned function with kernel heavily dependent on the training data hence may be not very stable.</p>
-<h2 id="Kernel-(gaussian)-SVM">Kernel (gaussian) SVM<a class="anchor-link" href="#Kernel-(gaussian)-SVM">&#182;</a></h2><h3 id="Derivation">Derivation<a class="anchor-link" href="#Derivation">&#182;</a></h3><p>\begin{align*}
-\text{Minimize the loss: }&amp; \\
-L(\beta) &amp;=  \sum_{i=1}^{n} \underset{\alpha_i \in [0,1]}{\max}\alpha_i(1- y_i X_i^\top \beta) + \frac{\lambda}{2} |\beta|^2\\
-\text{let } F(\alpha, \beta)&amp;=  \sum_{i=1}^{n}\alpha_i(1- y_i X_i^\top \beta) + \frac{\lambda}{2} |\beta|^2\\
-\text{The primal: } \Rightarrow &amp; \text{ the dual: } \\
-&amp; \underset{\beta}{\min}[\underset{\alpha_i \in [0,1]}{\max}F(\alpha, \beta)] \Rightarrow
-\underset{\alpha_i \in [0,1]}{\max}\underset{\beta}{\min}F(\alpha, \beta) \\
-\frac{\partial}{\partial \beta}F(\beta) &amp;= - \sum_{i=1}^{n}\alpha_i y_i X_i + \lambda \beta = 0\\
- &amp;\Rightarrow \text{representer: }\hat{\beta} = \frac{1}{\lambda}\sum_{i=1}^{n}\alpha_i y_i X_i \\
-\therefore \ F(\alpha) &amp;= \sum_{i=1}^{n}\alpha_i - \sum_{i=1}^{n}\alpha_iy_i X_i^\top \frac{1}{\lambda}\sum_{i=1}^{n}\alpha_i y_i X_i + \frac{\lambda}{2} | \frac{1}{\lambda}\sum_{i=1}^{n}\alpha_i y_i X_i|^2 \\
-&amp;= \sum_{i=1}^{n}\alpha_i - \frac{1}{2\lambda} \sum_{i,j}^{n}\alpha_i \alpha_j y_i y_j \langle X_i, X_j\rangle\\
-&amp;=\mathbf{1}^\top \alpha-\frac{1}{2\lambda}\alpha^\top Q \alpha \quad \text{where } Q_{ij} = y_i y_j \langle X_i, X_j\rangle\\
-\end{align*}
-\begin{align*}
-\text{Coordinate descent: } &amp; \quad \alpha^{(t+1)}_i =  \alpha^{(t)}_i + \delta e_i, \ i = 1, 2,..., n\\
-q(\alpha) &amp;= \mathbf{1}^\top (\alpha+\delta e_i)-\frac{1}{2\lambda}(\alpha+\delta e_i)^\top Q (\alpha+\delta e_i)\\
-        &amp;= \mathbf{1}^\top \alpha-\frac{1}{2\lambda}\alpha^\top Q \alpha + \mathbf{1}^\top(\delta e_i)-\frac{1}{2\lambda}(\delta e_i)^\top Q (\delta e_i)-\frac{1}{\lambda}(\delta e_i)^\top Q \alpha \\
-        &amp;= const. +  (\delta e_i)^\top( \mathbf{1} - \frac{1}{\lambda}Q \alpha) - \frac{1}{2\lambda}(\delta e_i)^\top Q (\delta e_i)\\
-\frac{\partial}{\partial \delta} &amp;= e_i^\top( \mathbf{1} - \frac{1}{\lambda}Q \alpha) - \frac{1}{\lambda}e_i^\top Q e_i \delta = 0 \Rightarrow \hat{\delta_i} = \frac{(\lambda-Q_i \alpha)}{Q_{ii}}\\
-\therefore \ \alpha^{(t+1)}_i &amp;= \alpha^{(t)}_i + \frac{(\lambda-Q_i \alpha)}{Q_{ii}} \\
-\text{Kernel trick: } &amp; \quad X \rightarrow h(X)\\
-F(\alpha, \beta)&amp;=  \sum_{i=1}^{n}\alpha_i(1- y_i h(X_i)^\top \beta) + \frac{\lambda}{2} |\beta|^2\\
- &amp;\Rightarrow \text{representer: }\hat{\beta} = \frac{1}{\lambda}\sum_{i=1}^{n}\alpha_i y_i h(X_i)\\
- F(\alpha) &amp;= \mathbf{1}^\top \alpha-\frac{1}{2\lambda}\alpha^\top Q \alpha \quad \text{where } Q_{ij} = y_i y_j \langle h(X_i), h(X_j)\rangle =  y_i y_j K(X_i, X_j)\\
- \hat{y} = sign(\hat{f}(x)) &amp;= sign(h(x)^T\frac{1}{\lambda}\sum_{i=1}^{n}\alpha_i y_i h(X_i)) = sign(\frac{1}{\lambda}\sum_{i=1}^{n}\alpha_i y_i K(X_i, x))
-\end{align*}</p>
-<h3 id="Experiment">Experiment<a class="anchor-link" href="#Experiment">&#182;</a></h3><p>Python code for gaussian kernel SVM for binary classification is attached below. 100 training observations and 100 testing examples are generated from $y = sign(x_1^2+x_2^2-0.8), x \in [0,1]^2$.</p>
-<p>Firstly, we experiment with a set of 100 $\lambda$s equally spaced within $(0,10]$, using gaussian kernel $exp(-5|x-x'|^2)$. The training error and testing accuracy is displayed in Figure 2-1. It can be observed that training is more accurate than tresting, and the curve is piecewise as in classification task the change in the scores must be large enough to affect the binary classification outcome. As the amount of penalty $\lambda$ increase, the testing accuracy increase and than decrease. It indicates that too small $\lambda$ leads to overfitting and too large $\lambda$ leads to underfit, which again justify the previous disscussion on overfitting.
-<img src="2-1.png" alt="Figure 2-1"></p>
-<p>Then, we try different $\gamma$s for the gaussian kernel $exp(-\gamma|x-x'|^2)$, corresponsing accuracies are displayed in Figure 2-2. For the kernel with the highest accuracy rate (.93), the classification boundary is plotted in Figure 2-3.
-<img src="2-2.png" alt="Figure 2-2">
-<img src="2-3.png" alt="Figure 2-3">
-In Figure 2-2, we can observe that either too small or too large $\gamma$ leads to low accuracy. When $\gamma$ is around 7, the accuracy is the highest which means the resulted hyperplane for classification separated the data points the most clear-cut.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Codes">Codes<a class="anchor-link" href="#Codes">&#182;</a></h3><h4 id="Problem-1">Problem 1<a class="anchor-link" href="#Problem-1">&#182;</a></h4>
+<h1 id="Kernel-Regression-and-Kernal-SVM-in-Python">Kernel Regression and Kernal SVM in Python<a class="anchor-link" href="#Kernel-Regression-and-Kernal-SVM-in-Python">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -11858,6 +11794,38 @@ In Figure 2-2, we can observe that either too small or too large $\gamma$ leads 
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Kernel-(gaussian)-Regression">Kernel (gaussian) Regression<a class="anchor-link" href="#Kernel-(gaussian)-Regression">&#182;</a></h2><h3 id="Derivation">Derivation<a class="anchor-link" href="#Derivation">&#182;</a></h3><p>\begin{align*}
+\text{Minimize the loss: }&amp; \\
+\frac{\partial L(\beta)}{\partial \beta} &amp;= -2X^T(Y-X\beta)+2\lambda\beta = 0 \\
+&amp; \Rightarrow \hat{\beta}_{ridge} = (X^TX+\lambda I_p)^{-1}X^TY =  X^T(XX^T+\lambda I_n)^{-1}Y\\
+\text{Representer: } \hat{\beta}_{ridge} &amp;= X^T(\langle X, X^T\rangle-\lambda I_n)^{-1}Y\\
+    &amp;=  X^TC_{(n \times 1)} = \sum_{j=1}^nc_jX_j, \quad C = (XX^T+\lambda I_n)^{-1}Y \\
+\text{Kernel trick: }&amp; \\
+f(x) &amp;= h(X)^T\beta = \sum_{k=1}^d\beta_kh_k(X) \\
+&amp; \quad \text{where } \beta_k \text{ are implicit parameters of a nonparametric function so } d=\infty\\
+L(\beta) &amp;= |Y - h(X)\beta|^2 + \lambda |\beta|^2 \\
+&amp; \Rightarrow \hat{\beta}_{kernel} = (h(X)^Th(X)+\lambda I_d)^{-1}h(X)^TY =  h(X)^T(h(X)h(X)^T-\lambda I_n)^{-1}Y \\
+&amp; \quad \text{the first expression is not solvable due to infinite dimension while the second is } n \times n \\
+\therefore \hat{\beta}_{kernel} &amp;= \sum_{j=1}^n c_j h(X_j), \quad C = (\langle h(X), h(X)\rangle + \lambda I_n)^{-1}Y  = (K(X, X)+ \lambda I_n)^{-1}Y \\
+\text{Estimation: }&amp; \\
+\hat{f}(x) &amp;= h(x)^T\sum_{j=1}^nc_jh(X_j) =  \sum_{j=1}^n c_j K(X_j, x) \\
+\end{align*}</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Experiment">Experiment<a class="anchor-link" href="#Experiment">&#182;</a></h3>
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -11899,6 +11867,15 @@ In Figure 2-2, we can observe that either too small or too large $\gamma$ leads 
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>100 training observations and 100 testing examples are generated from $y = x_1^2+x_2^2+\epsilon, x \in [0,1]^2, \epsilon \sim N(0,0.1)$.</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[3]:</div>
@@ -11928,6 +11905,15 @@ In Figure 2-2, we can observe that either too small or too large $\gamma$ leads 
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Firstly, we experiment with a set of 100 $\lambda$s equally spaced within $(0,2]$, using gaussian kernel $exp(-7|x-x'|^2)$. The training error and testing error is displayed in the plot.</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -12296,6 +12282,16 @@ ROTfuJZ1x8c6FmMShZWcjDHGxB0752SMMSbuWHIyxhgTdyw5GWOMiTuWnIwxxsQdS07GGGPizv8D
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>It can be observed that testing error is always higher than that of training. As the amount of penalty $\lambda$ increase, training error keeps increasing, while the testing error decrease and than increase. It indicates that too small $\lambda$ leads to overfitting and too large $\lambda$ leads to underfit, thus there is a bias-variance tradeoff in finding an optimal amount of penalty.</p>
+<p>Then, we try different $\gamma$s for the gaussian kernel $exp(-\gamma|x-x'|^2)$, corresponsing training errors and testing errors are displayed in Figure 1-2. For a set of kernels, we plot the learned f(x) in Figure 1-3 as hypersurfaces, and the white surface is the true $f(x)$ from which we generates the training data.</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -14601,7 +14597,42 @@ AVlAQEDASfj/GuAqRPB203gAAAAASUVORK5CYII=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Problem-2">Problem 2<a class="anchor-link" href="#Problem-2">&#182;</a></h4>
+<p>For different $\gamma$s, the behavior of testing and training error over against increasing $\lambda$s is similar to that in Figure 1-1, and an ideal $\lambda$ should be around 1. Moreover, as $\gamma$ increases, the distance/dissimilarity measure of the two points is larger, and the hypersurface is more spiky. Either too large or too small $\gamma$ leads to poor performance. In this case, $\gamma=8$ yields the smallest testing error while a smaller $\gamma$ is closer to theoriginal function. It indicates that the learned function with kernel heavily dependent on the training data hence may be not very stable.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Kernel-(gaussian)-SVM">Kernel (gaussian) SVM<a class="anchor-link" href="#Kernel-(gaussian)-SVM">&#182;</a></h2><h3 id="Derivation">Derivation<a class="anchor-link" href="#Derivation">&#182;</a></h3><p>\begin{align*}
+\text{Minimize the loss: }&amp; \\
+L(\beta) &amp;=  \sum_{i=1}^{n} \underset{\alpha_i \in [0,1]}{\max}\alpha_i(1- y_i X_i^\top \beta) + \frac{\lambda}{2} |\beta|^2\\
+\text{let } F(\alpha, \beta)&amp;=  \sum_{i=1}^{n}\alpha_i(1- y_i X_i^\top \beta) + \frac{\lambda}{2} |\beta|^2\\
+\text{The primal: } \Rightarrow &amp; \text{ the dual: } \\
+&amp; \underset{\beta}{\min}[\underset{\alpha_i \in [0,1]}{\max}F(\alpha, \beta)] \Rightarrow
+\underset{\alpha_i \in [0,1]}{\max}\underset{\beta}{\min}F(\alpha, \beta) \\
+\frac{\partial}{\partial \beta}F(\beta) &amp;= - \sum_{i=1}^{n}\alpha_i y_i X_i + \lambda \beta = 0\\
+ &amp;\Rightarrow \text{representer: }\hat{\beta} = \frac{1}{\lambda}\sum_{i=1}^{n}\alpha_i y_i X_i \\
+\therefore \ F(\alpha) &amp;= \sum_{i=1}^{n}\alpha_i - \sum_{i=1}^{n}\alpha_iy_i X_i^\top \frac{1}{\lambda}\sum_{i=1}^{n}\alpha_i y_i X_i + \frac{\lambda}{2} | \frac{1}{\lambda}\sum_{i=1}^{n}\alpha_i y_i X_i|^2 \\
+&amp;= \sum_{i=1}^{n}\alpha_i - \frac{1}{2\lambda} \sum_{i,j}^{n}\alpha_i \alpha_j y_i y_j \langle X_i, X_j\rangle\\
+&amp;=\mathbf{1}^\top \alpha-\frac{1}{2\lambda}\alpha^\top Q \alpha \quad \text{where } Q_{ij} = y_i y_j \langle X_i, X_j\rangle\\
+\end{align*}
+\begin{align*}
+\text{Coordinate descent: } &amp; \quad \alpha^{(t+1)}_i =  \alpha^{(t)}_i + \delta e_i, \ i = 1, 2,..., n\\
+q(\alpha) &amp;= \mathbf{1}^\top (\alpha+\delta e_i)-\frac{1}{2\lambda}(\alpha+\delta e_i)^\top Q (\alpha+\delta e_i)\\
+        &amp;= \mathbf{1}^\top \alpha-\frac{1}{2\lambda}\alpha^\top Q \alpha + \mathbf{1}^\top(\delta e_i)-\frac{1}{2\lambda}(\delta e_i)^\top Q (\delta e_i)-\frac{1}{\lambda}(\delta e_i)^\top Q \alpha \\
+        &amp;= const. +  (\delta e_i)^\top( \mathbf{1} - \frac{1}{\lambda}Q \alpha) - \frac{1}{2\lambda}(\delta e_i)^\top Q (\delta e_i)\\
+\frac{\partial}{\partial \delta} &amp;= e_i^\top( \mathbf{1} - \frac{1}{\lambda}Q \alpha) - \frac{1}{\lambda}e_i^\top Q e_i \delta = 0 \Rightarrow \hat{\delta_i} = \frac{(\lambda-Q_i \alpha)}{Q_{ii}}\\
+\therefore \ \alpha^{(t+1)}_i &amp;= \alpha^{(t)}_i + \frac{(\lambda-Q_i \alpha)}{Q_{ii}} \\
+\text{Kernel trick: } &amp; \quad X \rightarrow h(X)\\
+F(\alpha, \beta)&amp;=  \sum_{i=1}^{n}\alpha_i(1- y_i h(X_i)^\top \beta) + \frac{\lambda}{2} |\beta|^2\\
+ &amp;\Rightarrow \text{representer: }\hat{\beta} = \frac{1}{\lambda}\sum_{i=1}^{n}\alpha_i y_i h(X_i)\\
+ F(\alpha) &amp;= \mathbf{1}^\top \alpha-\frac{1}{2\lambda}\alpha^\top Q \alpha \quad \text{where } Q_{ij} = y_i y_j \langle h(X_i), h(X_j)\rangle =  y_i y_j K(X_i, X_j)\\
+ \hat{y} = sign(\hat{f}(x)) &amp;= sign(h(x)^T\frac{1}{\lambda}\sum_{i=1}^{n}\alpha_i y_i h(X_i)) = sign(\frac{1}{\lambda}\sum_{i=1}^{n}\alpha_i y_i K(X_i, x))
+\end{align*}</p>
+<h3 id="Experiment">Experiment<a class="anchor-link" href="#Experiment">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -14662,6 +14693,15 @@ AVlAQEDASfj/GuAqRPB203gAAAAASUVORK5CYII=
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>100 training observations and 100 testing examples are generated from $y = sign(x_1^2+x_2^2-0.8), x \in [0,1]^2$.</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[9]:</div>
@@ -14690,6 +14730,15 @@ AVlAQEDASfj/GuAqRPB203gAAAAASUVORK5CYII=
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Firstly, we experiment with a set of 100 $\lambda$s equally spaced within $(0,10]$, using gaussian kernel $exp(-5|x-x'|^2)$. The training error and testing accuracy is displayed in Figure 2-1.</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -15041,6 +15090,16 @@ ZOGccy6j/w+hwWosjPR1ZAAAAABJRU5ErkJggg==
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>It can be observed that training is more accurate than tresting, and the curve is piecewise as in classification task the change in the scores must be large enough to affect the binary classification outcome. As the amount of penalty $\lambda$ increase, the testing accuracy increase and than decrease. It indicates that too small $\lambda$ leads to overfitting and too large $\lambda$ leads to underfit, which again justify the previous disscussion on overfitting.</p>
+<p>Then, we try different $\gamma$s for the gaussian kernel $exp(-\gamma|x-x'|^2)$, corresponsing accuracies are displayed in Figure 2-2. For the kernel with the highest accuracy rate (.93), the classification boundary is plotted in Figure 2-3.</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -16521,6 +16580,15 @@ PRBlrMY8Dhsl1RhjjMeaj4wxxnisKBhjjPFYUTDGGOOxomCMMcZjRcEYY4zHioIxxhiPFQVjjDGe
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In Figure 2-2, we can observe that either too small or too large $\gamma$ leads to low accuracy. When $\gamma$ is around 7, the accuracy is the highest which means the resulted hyperplane for classification separated the data points the most clear-cut.</p>
+
+</div>
+</div>
 </div>
     </div>
   </div>
