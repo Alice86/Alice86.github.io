@@ -11775,22 +11775,8 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Spline-Regrsion-in-Python">Spline Regrsion in Python<a class="anchor-link" href="#Spline-Regrsion-in-Python">&#182;</a></h2><p>20 training observations are generated from $y = x^3+\epsilon, x \in [0,1]$, 100 knots are set to be equally spaced within $(0,1)$. A set of 100 $\lambda$ equally spaced within $(0,1]$ are tried. 
-In Figure 1., the fitted lines change from black to blue as the amount of penalty $\lambda$ increase, and the red line indicates the true $f(x)$. It can be observed that when $\lambda$ is small, the fitted line is very wiggy due to interpretation of noise. It tends to overfit as the number of parameters are greater than that of observations. As $\lambda$ increase, the fitted line is smoother, and gets very close to the truth at certain point.
-<img src="4-2.png" alt="Figure 1">
-In Figure 2., the training error and testing error is showed. As the amount of penalty $\lambda$ increase, training error keeps increasing, because bias is added and parameters are shrinked. Whereas, the testing error decrease and than increase. It indicates that spline with too small penalty tends to overfit as we discussed before, and too larger $\lambda$ leads to underfit due to too much bias. Therefore, a tradeoff between bias and variance is necessary.
-<img src="4-1.png" alt="Figure 2">
-In Figure 3., the spline regression is fitted with $\lambda=0.11$, which minimizes the testing error. The blue fitted line is indeed close to the truth. Nevertheless, in real application we shall use cross validation with multiple folds to get a more stable choice.
-<img src="4-3.png" alt="Figure 3"></p>
+<h2 id="Spline-Regrsion-in-Python">Spline Regrsion in Python<a class="anchor-link" href="#Spline-Regrsion-in-Python">&#182;</a></h2><p>With codes for spline regression in Python, we discuss the algorithm with respect to the change of parameters.</p>
 
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Codes">Codes<a class="anchor-link" href="#Codes">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -11922,6 +11908,15 @@ In Figure 3., the spline regression is fitted with $\lambda=0.11$, which minimiz
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The fitted lines change from black to blue as the amount of penalty $\lambda$ increase, and the red line indicates the true $f(x)$. It can be observed that when $\lambda$ is small, the fitted line is very wiggy due to interpretation of noise. It tends to overfit as the number of parameters are greater than that of observations. As $\lambda$ increase, the fitted line is smoother, and gets very close to the truth at certain point.</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -12161,6 +12156,15 @@ DUsH5savAAAAAElFTkSuQmCC
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The training error and testing error is showed. As the amount of penalty $\lambda$ increase, training error keeps increasing, because bias is added and parameters are shrinked. Whereas, the testing error decrease and than increase. It indicates that spline with too small penalty tends to overfit as we discussed before, and too larger $\lambda$ leads to underfit due to too much bias. Therefore, a tradeoff between bias and variance is necessary.</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -12490,6 +12494,15 @@ YpoUlFJK/X97dSwAAAAAMMjfet8oSqJJAYBJAYBJAYAFOdc1qy+IljsAAAAASUVORK5CYII=
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The spline regression is fitted with $\lambda=0.11$, which minimizes the testing error. The blue fitted line is indeed close to the truth. Nevertheless, in real application we shall use cross validation with multiple folds to get a more stable choice.</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
