@@ -11776,32 +11776,7 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Boosting-method-and-Neural-Net-in-Python">Boosting method and Neural Net in Python<a class="anchor-link" href="#Boosting-method-and-Neural-Net-in-Python">&#182;</a></h1><p>In this project, 200 training examples $X_i\in[0,1]^2$ is used, and $Y_i = X_{i1}^2+X_{i1}^2+\epsilon \sim (0, 0.01)$. The testing examples are generated with a grid of 625 $X_i$'s equally spaced, to approximate the true distribution.</p>
-<h2 id="Regression:-Matching-pursuit">Regression: Matching pursuit<a class="anchor-link" href="#Regression:-Matching-pursuit">&#182;</a></h2><p><strong>Testing and training loss against lambda</strong>
-<img src="1-1.png" alt="Testing and training loss against lambda">
-With regularization on the number of cuts, it can be found that the smaller regularization, the more cuts in the X space. As the noise is very small in our training data, more cuts gives a more precise result. The fitted function below is very close to the truth $f(x)=x_1^2+x_2^2$.
-<strong>Fitted f over training data (lambda=0.05)</strong>
-<img src="1-2.png" alt="Fitted f with lambda=0.1"></p>
-<h2 id="Classification:-Adaboost">Classification: Adaboost<a class="anchor-link" href="#Classification:-Adaboost">&#182;</a></h2><p><strong>Testing and training error against num_classifiers</strong>
-<img src="2-1.png" alt="Testing and training error against num_classifiers">
-It can be observed that the error rate of adaboost does not change monotonely, while it decrease as more classifier is included in general. A total of 20 weak classifiers gives the classification boundrary below which is quite satifying.</p>
-<p><strong>Classification boundrary with 20 weak classifiers</strong>
-<img src="2-3.png" alt="Classification boundrary with 20 weak classifiers"></p>
-<h2 id="Neural-Network">Neural Network<a class="anchor-link" href="#Neural-Network">&#182;</a></h2><p>After tuning the parameter, a learning rate of 0.001 and initialization with 0.01 scale is chosen, by which MSE/error-rate below 0.05 can be achieved within 200 training epoches.</p>
-<h3 id="Regression">Regression<a class="anchor-link" href="#Regression">&#182;</a></h3><p><img src="3-1.png" alt="Testing and training MSE against number_epoches">
-<strong>Fitted f after 200 epoches</strong>
-<img src="3-2.png" alt="Fitted f after 200 epoches"></p>
-<h3 id="Classification">Classification<a class="anchor-link" href="#Classification">&#182;</a></h3><p><img src="3-3.png" alt="Testing and training error against number of epoches">
-<strong>Classification boundrary after 150 epoches</strong>
-<img src="3-4.png" alt="Classification boundrary after 150 epoches"></p>
 
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Codes">Codes<a class="anchor-link" href="#Codes">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -11825,7 +11800,7 @@ It can be observed that the error rate of adaboost does not change monotonely, w
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Matching-pursuit">Matching pursuit<a class="anchor-link" href="#Matching-pursuit">&#182;</a></h3>
+<h2 id="Regression:-Matching-pursuit">Regression: Matching pursuit<a class="anchor-link" href="#Regression:-Matching-pursuit">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -13262,7 +13237,16 @@ UDY5qnbDEQAAAABJRU5ErkJggg==
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Adaboost">Adaboost<a class="anchor-link" href="#Adaboost">&#182;</a></h3>
+<p>With regularization on the number of cuts, it can be found that the smaller regularization, the more cuts in the X space. As the noise is very small in our training data, more cuts gives a more precise result. The fitted function below is very close to the truth $f(x)=x_1^2+x_2^2$.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Classification:-Adaboost">Classification: Adaboost<a class="anchor-link" href="#Classification:-Adaboost">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -13990,7 +13974,17 @@ RU5ErkJggg==
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Neural-Network">Neural Network<a class="anchor-link" href="#Neural-Network">&#182;</a></h3>
+<p>It can be observed that the error rate of adaboost does not change monotonely, while it decrease as more classifier is included in general. A total of 20 weak classifiers gives the classification boundrary below which is quite satifying.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Neural-Network">Neural Network<a class="anchor-link" href="#Neural-Network">&#182;</a></h2><p>After tuning the parameter, a learning rate of 0.001 and initialization with 0.01 scale is chosen, by which MSE/error-rate below 0.05 can be achieved within 200 training epoches.</p>
+
 </div>
 </div>
 </div>
