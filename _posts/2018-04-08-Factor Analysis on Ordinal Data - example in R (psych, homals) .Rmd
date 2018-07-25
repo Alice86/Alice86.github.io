@@ -1,0 +1,256 @@
+---
+title: "Gender Difference in Movie Genre Preferences Factor Analysis on Ordinal Data - R Code for Replication"
+author: "Jiayu Wu"
+date: "2018/4/4"
+output:
+  html_document:
+    toc: TRUE
+    toc_depth: 3
+---
+
+This post is a summary of my course project for UCLA STAT200B supervised by Prof. Handcock <http://www.stat.ucla.edu/~handcock/>. The formal report can be rechieved [here](https://github.com/Alice86/Multivariate_Analysis/blob/master/Gender%20Difference%20in%20Movie%20Genre%20Preferences%20Factor%20Analysis%20on%20Ordinal%20Data%20-%2003:2018.pdf). The outcomes can be replicated with the codes provided below.
+
+## Introduction
+
+In this project, three methods are discussed for factor analysis with ordinal data: 
+    
+    1) Naive FA with pearson correlation
+    2) FA with polychoric correlation
+    3) Nonlinear FA with optimal scaling
+
+
+### Factor analysis
+Factor analysis is an analytic data exploration and representation method to extract a small number of independent and interpretable factors from a high-dimensional observed dataset with complex structure. 
+
+For an observed data matrix $Y_{n×p}$ with p continuous manifest variables, classical factor analysis theory states that, it can be restructured as a linear combination of d continuous latent factors ${z_1,z_2,...z_d}$ plus a noise term $\epsilon$:
+$$Y=WZ+\epsilon,Z∼N(0,I_d),\epsilon∼N(0,\sigma I_p)$$.
+
+The use of classical factor analysis, however, is limited due to its strong assumptions: 1) both manifest variables and latent factors are continuous; 2) latent factors follows multivariate normal distribution; 3) the mapping from latent factors to manifest variables is linear. (Magidson & Vermunt, 2003; Han & Yang, 2016)
+
+In this project, we attempt to deal with violation of the first assumption.
+
+### Ordinal manifest data
+
+An ordinal variable is a categorical variable for which the possible values are ordered, which is prevalent in real datasets. For example, in survey data participants are often asked to express their attitudes in scales; in recommender system problems, users typically express their interests in an item by rating with “stars”, etc. 
+
+It is also notable that, methodology for ordinal variable can always be generalized to deal with other categorical variable, because binary variable can be regarded as a specific case of ordinal variable, and categorical variable can be transformed into binary dummy variables.
+
+The problem with ordinal variables in factor analysis is that it does not have a measure on association as the Pearson correlation on continuous variables, while a correlation measurement is required to extract uncorrelated latent factors.
+
+## Three methods
+
+In order to implement factor analysis on ordinal data, a natural reasoning is to monotonically map the discrete ordinal levels to a continuous space. The process of linearizing categorical variables is often referred to as **category quantification**.
+
+### Naive approach
+
+The first conceivable way of category quantification is to treat the levels directly as values from a continuous distributionm, which is straightforward and easy to apply.
+
+However, the true distance between the neighboring ordinal scales is unknown. When using them directly as values from a continuous distribution, the underlying assumption is that the distance between any two neighboring scales is identical. This assumption may hold when the data has likert-type scales, but is often violated when variables are not measured in comparable scales or even in completely different sets of scales.
+
+### Polychoric approach
+
+The next approach to be considered is to infer from the ordinal observation an underlying normally distributed continuous trait (can be generalized to other continuous distribution).
+
+The assumption is that the ordinal responses is made upon a continuously distributed trait and thresholds for categorical decision. Thus a measure of association between those continuous traits can be obtained, referred to as the polychoric correlation (tetrachoric correlation in the binary case). Then, classical factor analysis could be performed on the polychoric correlation. The cons could be that the assumption that each ordinal variable has an underlying continuous trait following some designated distribution does not always hold.
+
+### Nonlinear FA approach
+
+As introduced before, the objective in factor analysis is to maximize the proportion of variance from the original data explained by a limited number of latent factors, while with ordinal data we intend to find and fix the distances between scales. In nonlinear factor analysis, the technique called optimal scaling is used to achieve those two goals at the same time, or say, to find a categorical quantification such that the correlation is maximized as possible.
+
+The assumption of nonlinear FA is bilinearizability, which means that transformations of the variables can be found such that all bivariate regressions are exactly linear (De Leeuw, 2005). This is an assumption weaker than assuming multivariate normality (De Leeuw, 1988) as with the polychoric approach. A limitation of this method is that the rank constraint (the number of factors) must be determined in advance, and such a choice can be hard to justify because the criterion of the cumulative variance explained does not apply.
+
+### Discussion
+
+In summary, ordinal manifest variables violates the continuity assumption in classical factor analysis, therefore, category quantification - to determine a scale distance measurement to linearize ordinal data - is required. Theoretically, the nonlinear FA approach is the most assumption-free, hence an optimal choice for analytic-based data analysis, while it need the aid of related methods in choosing the number of constraints and cross-validating the interpretation.
+
+## Experiment with R
+
+### Data
+
+The data used in this report is a survey dataset of participants' rating in 1-5 scale ("Don't enjoy at all" to "Enjoy very much") on 10 movie genres (horror, thriller, comedy, romantic, Sci-Fi, war, fantasy, animated, documentary and action), related demographic features is also available. There are 1010 raw observations, 958 is left after eliminating missing values and dubious records. The [original data](https://www.kaggle.com/miroslavsabo/young-people-survey) is rechieved from kaggle in March, 2018. A preprocessed dataset in .Rdata format can be rechieved [here](https://github.com/Alice86/Multivariate_Analysis/blob/master/data.RData) for replication of the following results.
+
+```{r}
+## Delete dubious observation
+# check = apply(dat[,1:10], 1, function(tl) length(table(tl)))
+# fake = which(as.numeric(check)==1)
+# dat = dat[-fake,]
+# save(dat, file = "data.RData")
+## Load data and packages
+load("data.RData")
+# data summary
+library(psych)
+des = describe(dat)
+knitr::kable(des[,c("min", "max", "mean", "median", "skew", "kurtosis")], main = "Data Summary")
+```
+
+### Pearson correlation v.s. polychoric correlation
+
+Polychoric correlation was developed to measure raters' agreement (Drasgow, 1988). The principle of estimation is to find the thresholds on a multivariate normal distribution which maximize the likelihood of observing the empirical manifest, then the correlation is computed (Uebersax, 2006). 
+
+In R package "psyche", the scaling thresholds as well as corrlation are computed with function "polychoric":
+
+```{r, warning=FALSE}
+load("data.RData")
+features = dat[1:10]
+## Pearson Correlation
+pear_cor = cor(features)
+cor.plot(pear_cor, numbers=T, upper=FALSE, main = "Pearson Correlation", show.legend = FALSE)
+## Polychoric correlation
+poly_cor = polychoric(features)
+rho = poly_cor$rho
+save(rho, file = "polychoric")
+### Thresholds/Scaling results
+poly_cor$tau
+cor.plot(poly_cor$rho, numbers=T, upper=FALSE, main = "Polychoric Correlation", show.legend = FALSE)
+### Plot the difference
+#diff = (poly_cor$rho - pear_cor)*((pear_cor>=0)*2-1)
+#diff[3,2] = 0.02
+#diff[9,3] =0.02
+#cor.plot(diff, numbers=T, upper=FALSE, diag=FALSE)
+```
+
+The computed correlation matrices are visualized above. Positive values are shaded in blue while negative ones in red, and the greater the absolute value of the correlation, the deeper the color. 
+
+It can be observed that the colored patchs have very similar patterns, while the polychoric approach suggests a stronger association. Pearson and polychoric correlations behave similarly for this dataset, because the survey design of likert-type scales makes a uniform assumption justifiable. As a result, factor analysis based on those two correlation matrices is likely to give similar reconstruction of the original data structure. 
+
+However, polychoric approach can be more plausible as in practice scale-level rating is hardly guaranteed, and the kurtosis and skewness of some variables (ex. "Comedy") indicates a violation of uniform assumption. Moreover, it also gives a stronger correlation measure, thus a larger proportion of variance could be addressed in factor analysis. 
+
+### Polychoric factor analysis with "psych"
+
+By far, three factors seem to be a reasonable choice as the first three eigenvalues exceed 1. The scree plot below shows a sharp break after the third eigenvalue, and also presents a comparison with the scree of a random data matrix of the same size marked in dashed line, which once again confirm the choice of three factors.
+
+```{r, warning=FALSE}
+load("polychoric")
+# Scree plot
+fa.parallel(rho, fm="pa", fa="fa", main = "Scree Plot")
+# Polychoric factor analysis
+poly_model = fa(features, nfactor=3, cor="poly", fm="mle", rotate = "none")
+save(poly_model, file = "poly_model")
+poly_model$loadings
+```
+
+Therefore, a factor analysis with three latent factors is performed, with maximum likelihood estimation. 45.2\% of variance is explained cumulatively. 
+
+$F_2$ accounts for 18\% of total variance. It is primarily defined by the variables "Fantasy", "Animated" and "Romantic", it could be interpreted as a factor of the preference for storyline and emotional conveyance. $F_1$ explained 15\% of total variance, the variables "Horror" and "Thriller" have high positive loadings, while  "Fantasy" and "Romantic" load negatively on this factor, which indicates that $F_1$ may be a latent factor of the preference for excitement from movie. The proportion of variance explained by the third factor $F_3$ is 13\%, the variables "Action", "Sci-Fi" and "War" have high loadings on this factor. A possible interpretation of $F_3$ is the preference for the scene and special effects of a movie. 
+
+```{r, warning=FALSE}
+load("poly_model")
+# Cluster analysis plot
+fa.diagram(poly_model)
+```
+
+In the cluster analysis plot, the interpretation of three factors is visually displayed, all loadings with an absolute value greater than 0.3 are represented as an edge.
+
+A powerful visual aid for exploratory factor analysis is the biplot, which shows both the observations and factors in a plot. In order to get some understanding of gender difference in the preferences for movie genre, the observation in the biplot is marked in orange if the participant is female, otherwise in blue. 
+
+```{r, warning=FALSE}
+load("poly_model")
+# Biplot by gender
+biplot(poly_model, pch=c(21,16)[dat[,"Gender"]+1],
+       group = (dat[,"Gender"]+1),
+       main="Biplot by gender", col = c("orange","blue"))
+```
+
+It can be observed that the gender difference is more obvious on $F_3$ and $F_2$. Observations from male participants cluster on the positive side along the $F_3$ axis, which indicates a preference on movie genre with spectacular scene and special effects, like action movie or Sci-fi movie, while females do not seem to have general propensity on this factor. Whereas, female participants give more responses reflected on the positive side along the $F_2$ axis, and tend to rate lower on movie genres that lacks emotional conveyance, while males give evenly distributed responses along this axis. 
+
+The biplot also indicates that the latent factors $F_2$ and $F_1$ are not normally distributed, which is a violation of the assumption of classical factor analysis. Moreover, the previous interpretation of latent factors entails ambiguity, as the interpretation of $F_1$ and $F_3$ give rise to overlaps. Therefore, it is necessary to further explore the structure of the data in the nonlinear factor analysis approach, in order to avoid false specification of the latent factors and over-interpretation of the pattern.
+
+### Nonlinear FA with "homals"
+
+In nonlinear factor analysis, category quantification is attempted at the same time as maximizing the variance, so the proportions of variance explained (typically measured with eigenvalues in the classical method) change with the rank constraints, making it necessary and difficult to dertermine in advance the number of factors, i.e, the rank constraints. Therefore, the scree plots with three factors and with ten factors respectively are printed for a better view, a sharp break after the second eigenvalue can be identified from both plots.
+
+```{r, warning=FALSE}
+library(homals)
+load("data.RData")
+features = dat[1:10]
+# nonlinear FA with 3 factors
+nfa1 = homals(features, ndim = 3, level = "ordinal")
+# nfa1$eigenvalues
+nfa0 = homals(features, ndim = 10, level = "ordinal")
+# nfa0$eigenvalues
+# Screep plots
+par(mfrow = c(1,2))
+plot(nfa1, plot.type = "screeplot")
+plot(nfa0, plot.type = "screeplot")
+# nonlinear FA with 2 factors
+nfa = homals(features, ndim = 2, level = "ordinal")
+save(nfa, file = "nonlinearFA")
+```
+
+The loading matrix is derived below with related visualization. $\tilde{F}_1$ can be interpreted as the preference for story and emotional conveyance, which is analogously to $F_2$ from the polychoric approach, yet in the opposite direction. Whereas, $\tilde{F}_2$ seem to synthesize $F_1$ and $F_3$ as one single factor of the preference for grand scenes and excitement from the movie. This structure is not only simpler than that derived in the polychoric approach previously, but also less ambiguous in interpretation.
+
+```{r, warning=FALSE}
+load("data.RData")
+load("nonlinearFA")
+# Derive loading matrix
+cache = apply(features, 2, function(x) nlevels(as.factor(x)))
+ld = unlist(lapply(nfa$loadings, function(x) x[1,]))
+loadings = matrix(ld, byrow = T, nrow = 10)
+rownames(loadings) = names(cache)
+scores = nfa$objscores
+x = list()
+x$scores <- scores
+x$loadings <- loadings
+class(x) <- c('psych','fa')
+# Biplot by Gender
+biplot(x, pch=c(21,16)[dat[,"Gender"]+1],
+       group = (dat[,"Gender"]+1),
+       xlim.s=c(-0.035,0.035),ylim.s=c(-0.02,0.035), arrow.len = 0.1,
+       main="Biplot with observations by gender", 
+       col = c("orange","blue"), pos = 3)
+# Loading plot
+plot(nfa, plot.type = "loadplot", asp = 1)
+# Histograms
+par(mfrow = c(1,2))
+hist(scores[,1], main = "Histogram of Factor 1")
+hist(scores[,2], main = "Histogram of Factor 2")
+```
+
+The biplot by gender suggests that male participants typically have a preference for movie genres with grand and exciting scenes while less interested in the emotional resonance from movies, as the observations in blue cluster to the upper right and align with the variables "Thriller", "Horror", "Action", "War" and "Sci-Fi". Females, on the other hand, do not show a preference as clear-cut, whereas there is also a general tendency towards movie genres with more profound sentimental content such as "Fantasy", "Romantic" and "Animated". From the loading plot, we may obtain a more clear view of the genres that are close to each other, and it is notable that this distance clustering on the dimensions defined with two latent factors is in line with commonsense. It is also remarkable that the two latent factors seem to be normally distributed as showed in the histograms.
+
+### Summary
+
+Based on nonlinear factor analysis, we derive two latent factors of the preference for storyline or emotional conveyance and for scene or excitement from the original data. These two factors are roughly normally distributed and can be synthesized into the manifest variables with nonlinear transformation plus noise term. With this factorization, we also reveals gender difference in movie preference and clustering of closely-related movie genres.
+
+Nonlinear factor analysis is demonstrated to be the optimal approach with the minimum assumption and the greatest effectiveness in recognizing hidden structure that is accountable as well as simple. Nevertheless, it could be aided by polychoric factor analysis. Firstly, the polychoric correlation gives a overview of the association between variables before deriving factors. Secondly, the computation as well as intuition of polychoric factor analysis is simple and straightforward, therefore, it offers a reference beforehand and a validation afterwards, on the choice of the number of factors and the interpretation of the latent structure.
+
+## References
+De Leeuw, J., & Mair, P. (2007). Homogeneity Analysis in R: The package homals.
+
+De Leeuw, J. (2011). Nonlinear principal component analysis and related techniques.
+
+De Leeuw, J. (2005). Multivariate analysis with optimal scaling.
+
+Drasgow F. (1988). Polychoric and polyserial correlations. In Kotz L, Johnson NL (Eds.), Encyclopedia of Statistical Sciences. Vol. 7 (pp. 69-74). New York: Wiley.
+
+Han, T., Lu, Y., Zhu, S. C., & Wu, Y. N. (2017). Alternating Back-Propagation for Generator Network. In AAAI (Vol. 3, p. 13).
+
+Koren, Y., Bell, R., & Volinsky, C. (2009). Matrix factorization techniques for recommender systems. Computer 42(8):30?37.
+
+Olshausen, B. A., & Field, D. J. (1997). Sparse coding with an overcomplete basis set: A strategy employed by v1? Vision Research 37(23):3311?3325.
+
+Magidson, J., & Vermunt, J. K. (2003). Comparing latent class factor analysis with traditional factor analysis for datamining. Statistical data mining and knowledge discovery, 373-383.
+
+Uebersax, J. S. (2006). Introduction to the tetrachoric and polychoric correlation coefficients. Obtenido de http://www. john-uebersax. com/stat/tetra. htm.
+
+## Appendix: codes for MCA plot
+
+Reference:[5 functions to do Multiple Correspondence Analysis in R](http://www.gastonsanchez.com/visually-enforced/how-to/2012/10/13/MCA-in-R/)
+
+```{r, warning=FALSE}
+load("data.RData")
+load("nonlinearFA")
+cache = apply(features, 2, function(x) nlevels(as.factor(x)))
+D1 = unlist(lapply(nfa$catscores, function(x) x[,1]))
+D2 = unlist(lapply(nfa$catscores, function(x) x[,2]))
+nfa_vars_df = data.frame(D1 = D1, D2 = D2, Variable = rep(names(cache), cache))
+library(ggplot2)
+ggplot(data = nfa_vars_df, 
+       aes(x = D1, y = D2, label = rownames(nfa_vars_df))) +
+       geom_hline(yintercept = 0, colour = "gray70") +
+       geom_vline(xintercept = 0, colour = "gray70") +
+       geom_text(aes(colour = Variable)) +
+       ggtitle("MCA plot of variables using R package homals")
+```
+
+
