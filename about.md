@@ -23,13 +23,13 @@ Location: Los Angeles, California 90095
 09/2017 —— 06/2019    **Master of Science in Statistics** $\qquad$
 GPA: 3.94  $\qquad$    UCLA  
 
-09/2014 —— 07/2017    **Bachelor of Economics in Mathematical Statistics**   $\quad$ GPA: 3.91 Rank:1/21  $\quad$  XMU-WISE  
+09/2014 —— 07/2017    **Bachelor of Economics in Mathematical Statistics**   $\quad$ GPA: 3.91 $\quad$ Rank:1/21  $\quad$  XMU-WISE  
 **Thesis** 中国省域电子商务发展规模及其影响因素 Provincial Development of Chinese E-commerce
 with Related Factors       
 · PCA and Regression on e-commerce development of 31 regions with 12 features in China
 
 
-09/2013 —— 07/2017    **Bachelor of Art in English**  $\quad$ GPA: 3.84     $\quad$   XMU-CFLC   
+09/2013 —— 07/2017    **Bachelor of Art in English**  $\quad$ GPA: 3.84 $\quad$ Rank:5/99  $\quad$   XMU-CFLC   
 **Thesis** Pauses in Chinese-English Consecutive Interpreting by Novice Learners 口译初学者汉英交替传译中的停顿        
 · Analyzed features of typical pauses to discuss major challenges for interpreting learners with 244 observations of pauses from simulated interpreting experiments
 
@@ -82,8 +82,7 @@ with Related Factors
 · Led and trained a group of 12 volunteers for reception and liaison of guests     
 
 **Certifications**         
-SQL - Stanford Online $\qquad$			License: d1a297cf388d47b891e58065cc23c9ee		$\qquad$	 	 Aug. 2017 
-
+SQL - Stanford Online $\qquad$			License: d1a297cf388d47b891e58065cc23c9ee		$\qquad$	 	 Aug. 2017            
 R Programming - Coursera $\qquad$	License: DZ4XS8HX3SKK		$\qquad$	 Aug. 2016 
 
 **Awards**  
