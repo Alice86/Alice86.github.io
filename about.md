@@ -23,7 +23,7 @@ Location: Los Angeles, California 90095
 09/2017 —— 06/2019    **Master of Science in Statistics** $\qquad$
 GPA: 3.94  $\qquad$    UCLA  
 
-09/2014 —— 07/2017    **Bachelor of Economics in Mathematical Statistics**   $\quad$ GPA: 3.91 $\quad$ Rank:1/21  $\quad$  XMU-WISE  
+09/2014 —— 07/2017    **Bachelor of Economics in Statistics**   $\quad$ GPA: 3.91 $\quad$ Rank:1/21  $\quad$  XMU-WISE  
 **Thesis** 中国省域电子商务发展规模及其影响因素 Provincial Development of Chinese E-commerce
 with Related Factors       
 · PCA and Regression on e-commerce development of 31 regions with 12 features in China
