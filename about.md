@@ -15,20 +15,21 @@ Statisics and data science learner, interested in statistical learning and multi
 Programming primarily with Python (numpy, pandas, tensorflow) and R, profficient in mySQL.
 
 E-mail: wujiayu86@outlook.com / jiayuwu@ucla.edu     
-Github: [https://github.com/Alice86 ](https://github.com/Alice86 )
+Github: [https://github.com/Alice86 ](https://github.com/Alice86 )         
 LinkedIn: [https://www.linkedin.com/in/alice-wu-170146139/](https://www.linkedin.com/in/alice-wu-170146139/)            
 Birth: 07/31/1995, China          
 Location: Los Angeles, California 90095      
 
-09/2017 —— 06/2019    **Master of Science in Statistics** \qquad  GPA: 3.94  \qquad    UCLA  
+09/2017 —— 06/2019    **Master of Science in Statistics** $\qquad$
+GPA: 3.94  $\qquad$    UCLA  
 
-09/2014 —— 07/2017    **Bachelor of Economics in Mathematical Statistics**   \qquad GPA: 3.91 Rank:1/21  \qquad  XMU-WISE  
+09/2014 —— 07/2017    **Bachelor of Economics in Mathematical Statistics**   $\qquad$ GPA: 3.91 Rank:1/21  $\qquad$  XMU-WISE  
 **Thesis** 中国省域电子商务发展规模及其影响因素 Provincial Development of Chinese E-commerce
 with Related Factors       
 · PCA and Regression on e-commerce development of 31 regions with 12 features in China
 
 
-09/2013 —— 07/2017    **Bachelor of Art in English**   \qquad GPA: 3.84     \qquad     XMU-CFLC   
+09/2013 —— 07/2017    **Bachelor of Art in English**  $\qquad$ GPA: 3.84     $\qquad$   XMU-CFLC   
 **Thesis** Pauses in Chinese-English Consecutive Interpreting by Novice Learners 口译初学者汉英交替传译中的停顿        
 · Analyzed features of typical pauses to discuss major challenges for interpreting learners with 244 observations of pauses from simulated interpreting experiments
 
@@ -82,9 +83,9 @@ with Related Factors
 · Led and trained a group of 12 volunteers for reception and liaison of guests     
 
 **Certifications**
-SQL - Stanford Online \qquad			License: d1a297cf388d47b891e58065cc23c9ee		\qquad	 	 Aug. 2017 
+SQL - Stanford Online $\qquad$			License: d1a297cf388d47b891e58065cc23c9ee		$\qquad$	 	 Aug. 2017 
 
-R Programming - Coursera \qquad			License: DZ4XS8HX3SKK			\qquad	 Aug. 2016 
+R Programming - Coursera $\qquad$	License: DZ4XS8HX3SKK		$\qquad$	 Aug. 2016 
 
 **Awards**  
 CUMUM 1st Prize of Fujian Division (2016)    
@@ -95,3 +96,12 @@ Excellent Merit Student (XMU, 2016, 2015, 2014)
 Dean’s List Awards (WISE, 2016, 2015)    
 Dean’s List Awards (CFLC, 2016)    
 
+**Courses**
+Nonparametric Function Estimation and Modeling (A+)          
+Matrix Algebra and Optimization (A+)          
+Statistical Modeling and Learning in Vision and Cognition (A)          
+Statistics Programming (A)          
+Monte Carlo Methods for Optimization (A)          
+Statistical Modeling and Learning (A)          
+Applied Probability	(A)          		
+Research Design, Sampling, and Analysis (A)		
