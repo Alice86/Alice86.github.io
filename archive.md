@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Archive"
-description: "文章归档"
+description: "posts"
 header-img: "img/achives.jpg"
 ---
 
