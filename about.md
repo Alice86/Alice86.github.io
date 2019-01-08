@@ -59,10 +59,6 @@ on different datasets.
 · Contacted and arranged reception for VIPs from Alibaba, Amazon, Google, Paypal, OTTO, etc.       
 · Led and trained a group of 12 volunteers for reception and liaison of guests     
 
-**Certifications**         
-SQL - Stanford Online $\qquad$			License: d1a297cf388d47b891e58065cc23c9ee		$\qquad$	 	 Aug. 2017            
-R Programming - Coursera $\qquad$	License: DZ4XS8HX3SKK		$\qquad$	 Aug. 2016 
-
 **Projects**    
 
 *Machine Learning with Application on Vision and Cognition* Oct. 2018
@@ -100,6 +96,12 @@ R Programming - Coursera $\qquad$	License: DZ4XS8HX3SKK		$\qquad$	 Aug. 2016
 · Discussed system changes with traffic assignment model to evaluate the performances with matlab 
 
 
+**Skills**        
+Programming: Python (tensorflow, scikit-learn, matplotlib, pytorch), R (ggplot2, rcpp), mySQL, matlab       
+Statistical Modeling: generalized linear model, latent variable model, multivariate dimension scaling, etc.       
+Machine Learning: regularization, kernel machine, boosting machine, neural variational inference, MCMC, etc.       
+
+
 **Publications**    
 · Jiayu Wu. *Analyses on the Background and Impact of Establishment of the National Paper Exchange* [J]. China Urban Finance, 2016(8): 28-31  
 [Link to online magzine](http://mall.cnki.net/magazine/Article/ZCSJ201608019.htm)
@@ -124,7 +126,7 @@ Statistical Modeling and Learning (A)
 Applied Probability	(A)          		
 Research Design, Sampling, and Analysis (A)		
 
-**Skills**        
-Programming: Python (tensorflow, scikit-learn, matplotlib, pytorch), R (ggplot2, rcpp), mySQL, matlab       
-Statistical Modeling: generalized linear model, latent variable model, multivariate dimension scaling, etc.       
-Machine Learning: regularization, kernel machine, boosting machine, neural variational inference, MCMC, etc.       
+
+**Certifications**         
+SQL - Stanford Online $\qquad$			License: d1a297cf388d47b891e58065cc23c9ee		$\qquad$	 	 Aug. 2017            
+R Programming - Coursera $\qquad$	License: DZ4XS8HX3SKK		$\qquad$	 Aug. 2016 
