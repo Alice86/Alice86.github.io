@@ -22,9 +22,10 @@ LinkedIn: [https://www.linkedin.com/in/alice-wu-170146139/](https://www.linkedin
 
 09/2017 —— 06/2019    **Master of Science in Statistics** $\qquad$
 GPA: 3.96  $\qquad$   UCLA  
-**Thesis** Leveraging Label Information in Representation Learning for Multi-label Text Classification
+**Thesis** Leveraging Label Information in Representation Learning for Multi-label Text Classification         
 · introduce two designs of label-enhanced representation learning: Label-embedding Attention Model (LEAM) and Conditional Variational Document model (CVDM) with application on real-world datasets                 
 · rely on the annotated labels as auxiliary information to guide the learning of task-tangent data representation as well as supervision in classication stage
+
 
 09/2014 —— 07/2017    **Bachelor of Economics in Statistics**   $\quad$ GPA: 3.91 $\quad$ Rank:1/21  $\quad$  XMU-WISE  
 **Thesis** 中国省域电子商务发展规模及其影响因素 Provincial Development of Chinese E-commerce
@@ -37,8 +38,8 @@ with Related Factors
 · Analyzed features of typical pauses to discuss major challenges for interpreting learners with 244 observations of pauses from simulated interpreting experiments
 
 **Working Experience**    
-
-10/2018---   Stratifyd Inc., R&D Team, Machine Learning Research Intern
+10/2018-07/2019  Stratifyd Inc., R&D Team, Machine Learning Research Intern        
+07/2019---       Stratifyd Inc., R&D Team, Machine Learning Research Scientist
 
 · Design and deploy machine learning models on text and numerical data for business intelligence platform       
 · Extend on state-of-art deep topic model and VAE for semi-supervised multi-label classification       
