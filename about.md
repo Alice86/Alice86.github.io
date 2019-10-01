@@ -11,23 +11,25 @@ header-img: "img/about_me.JPG"
 
 Jiayu (Alice) Wu 伍佳昱
 
-I am a second-year Master candidate in Statistics at UCLA, supervised by Professor Y. Wu. I currently work as a research intern at Stratifyd, Inc., working with Dr. Liu on text data modeling for business insights. 
+I currently work as a Machine Learning Research Scientist at Stratifyd Inc, working with Dr. Liu on natural language modeling for an AI-powered business intelligence platform providing automated real time customer analysis for business owners. 
+Prior to that, I graduated from UCLA with a MS degree in Statistics, supervised by Professor Y. Wu. I also have Bachelor degrees of Economics and of Arts from Xiamen University.
 
-I am particularly interested in generative modeling and machine learning for vision and natural language. My ongoing project with Stratifyd is on semi-supervised text labeling based on deep generative model. 
+I am particularly interested in structured representation learning via generative learning, attnetion mechansm, graph network, etc., to facilitate the understanding of often unbalanced and noisy industrial data. My ongoing project is on semi-supervised Extreme Label Classification on text data. 
 
 E-mail: wujiayu86@outlook.com / jiayuwu@ucla.edu     
 Github: [https://github.com/Alice86 ](https://github.com/Alice86 )         
-LinkedIn: [https://www.linkedin.com/in/alice-wu-170146139/](https://www.linkedin.com/in/alice-wu-170146139/)            
-Birth: 07/31/1995, China          
-Location: Los Angeles, California 90095      
+LinkedIn: [https://www.linkedin.com/in/alice-wu-170146139/](https://www.linkedin.com/in/alice-wu-170146139/)   
 
 09/2017 —— 06/2019    **Master of Science in Statistics** $\qquad$
-GPA: 3.95  $\qquad$    UCLA  
+GPA: 3.96  $\qquad$   UCLA  
+**Thesis** Leveraging Label Information in Representation Learning for Multi-label Text Classification
+· introduce two designs of label-enhanced representation learning: Label-embedding Attention Model (LEAM) and Conditional Variational Document model (CVDM) with application on real-world datasets                 
+· rely on the annotated labels as auxiliary information to guide the learning of task-tangent data representation as well as supervision in classication stage
 
 09/2014 —— 07/2017    **Bachelor of Economics in Statistics**   $\quad$ GPA: 3.91 $\quad$ Rank:1/21  $\quad$  XMU-WISE  
 **Thesis** 中国省域电子商务发展规模及其影响因素 Provincial Development of Chinese E-commerce
 with Related Factors       
-· PCA and Regression on e-commerce development of 31 regions with 12 features in China
+· Analysis based on PCA and Regression on e-commerce development of 31 regions with 12 features in China
 
 
 09/2013 —— 07/2017    **Bachelor of Art in English**  $\quad$ GPA: 3.84 $\quad$ Rank:5/99  $\quad$   XMU-CFLC   
