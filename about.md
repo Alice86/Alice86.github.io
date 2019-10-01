@@ -2,7 +2,7 @@
 layout: page
 title: "About Me"
 description: "Jiayu Wu"
-header-img: "img/About me.JPG"
+header-img: "img/about_me.JPG"
 ---
 
 <center>

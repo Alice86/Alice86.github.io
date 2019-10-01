@@ -1,0 +1,86 @@
+---
+title: "Memo on deep learning for visiona and cognition in Python (numpy, tensorflow, pytorch)  - M232A projects"
+author: "Jiayu Wu"
+date: "2018/3/24"
+output:
+  html_document:
+    toc: TRUE
+    toc_depth: 2
+---
+
+# Project 1. Properties of natural image statistics
+
+Report: https://alice86.github.io/2018/01/21/Natural-Image-Statistics-High-Kurtosis-and-Scale-Invariance/
+
+Codes: https://github.com/Alice86/DeepLearning/blob/master/1_Natural%20Image%20Statistics/Codes.py
+
+High kurtosis and scale invariance of natural image is illustrated in this project through python (numpy) coding. 
+
+Python package PIL is useful for image processing (extract pixels, converting RGB/gray_level, view image), and then numpy arrays operations can be applied. 
+    
+A gradient filter, i.e., the difference between neighboring pixels, can be used to model the image data, datatype should also be cautioned before the analysis.
+    
+It is often in our interest to reduce the redundant infomation and simplify the analysis, it can be achieved by re-scale the intensity of the image and/or down sample the image 
+
+# Project 2. Fully connected NNs from scratch
+
+Codes: https://github.com/Alice86/DeepLearning/tree/master/2_FCnet%20from%20scrapt/stats232a
+
+In this project, fully connected neural networks are written from scrapt with numpy to classify MNIST & CIFAR10 datasets. It reviews the formulation of NN algorithm, the calculation of gradients through back proporgation and the update rules, while offering a reference to the build structure of large-scale program in Python and giving examples on what to monitor in the training phase.
+
+The building blocks of NN combines forward layers and backward layers, the former is the designed model and the later calculates corresponding gradients. The commonly used are fully connected layers which is a linear transformation with weights and biases, and nonlinear activation relu which converts all negative data to positive. Back-propogation based on chain rule is used in the gradient calculation. At last, a loss layer like softmax should be applied to get a desired output. When encountering log over 0 which produces overflow, the log-sum-exp trick (https://www.xarg.org/2016/06/the-log-sum-exp-trick-in-machine-learning/) can be used, or simply add a small margin (eg. 1e-6). 
+
+For the traning process, a separate class "solver" is defined, and the training is powered by update rules. Starting from the most basic SGD, we can also use momentom, RMSProp or Adam, which accelarate and stablize the training.
+
+Loss and accuracy can be printed to monitor the process, and a plot showing the training history after the trianing is also useful. If convergence is slow or can not reach the gloabl minimum, the initial learning late and weight scale can be tuned.
+
+# Project 3. CNN, ResNets and RL
+
+## CNN and ResNets
+
+Codes: https://github.com/Alice86/DeepLearning/tree/master/3_CONVnet%20and%20RESnet%20from%20scrapt%3B%20DQN%20for%20carpole%20/problem1/stats232a
+
+In this project we extend from fully-connected NN to convolutional ones, which better capture the in formation with limited num of neurons (parameters). 
+
+In the script, the extra challenge is the shape and dimension of the strides and kernels especially when dealing with padding. 
+
+The difference between residual net and ordinary net is that it passes the sum of the output from the last layer and that from the layer before to the next layer. The coding is simple but the improvement in training is remarkable.
+
+## Reinforcement Learning - DQN
+
+Report:https://alice86.github.io/2018/02/22/Reinforcement-Learning-with-DQN/
+
+Codes:https://github.com/Alice86/DeepLearning/blob/master/3_CONVnet%20and%20RESnet%20from%20scrapt;%20DQN%20for%20carpole%20/problem2/dqn.py
+
+This project use DQN to train an optimal control game on-line with PyTorch. Experience replay and epsilon-greedy are applied for Q-learning. 
+The implementation of the former can be facilitated by the use of a data structure - deque, which memorize (append) new data and automatically discard the old records when reaching maxlen. Another technique in structuring data is to use "zip" to transpose the data from the list (http://stackoverflow.com/a/19343/3343043
+). Epsilon-greedy compute a probability for the algorithm to explore new actions rather than stick to old experience only.
+
+The training process deals with the differences between a final state and the others, a mask build with map function is useful, which is like the "apply" on list in R.
+Also, in Pytorch whether a variable is in training is marked in ".volatile", it should be set to False after finishing updating.
+
+Two training inputs are tried, with the whole image and with a reduced features vector. The later is proven to be more efficient, as the former is more time-consuming and takes longer to recover from a severely descending loss in exploration. With the image input, the rewards for a failed action can be set to be smaller than -1 if the training is hard to converge. Another notable detail is that with less variables for the vector input, the discount rate \gamma should be smaller, otherwise the training gets stuck on existing experience and fails to update the policy due to lack of flexibility. 
+
+# Project 4. Generative modeling - VAE, DCGAN
+
+Codes: https://github.com/Alice86/DeepLearning/tree/master/4_VAE%20and%20DCGAN
+
+In this project, we generate images with minist as training examples in tensorflow using two methods. Both use two networks to map the image into latent variables and to generate image from the latent variables (the later involves deconv layers), while VAE minimize over one loss function and GAN play adversial game. It is notable that the last layer of the network should not use batch normalization, which rescale and diminish the feature.
+
+At the core of the programming structure is a python class, in which the network structure (in these two example two nets) is firstly defined, then we define a model (computation graph) where the loss and the optimizer (update rule) are specified with placeholders, finally the model is put into the traning loop.
+
+The variable scope and reuse option distinguish the states of the variables in use (reuse = True) and in update. In the building part of the program, the propcess is defined as graph in tensorflow, then they are activated by Session.run with inputs feeded in tranining process, note that the objects need to be defined with self. for use in the whole class. The batch norm in tensorflow has several versions, contrib.layers.batch_norm is the recommended (https://stackoverflow.com/questions/40879967/how-to-use-batch-normalization-correctly-in-tensorflow). For placeholders try to specify all dimension, as some functions may fail to proceed with none. 
+
+In VAE, the loss function is the core. Because the shape can be complex for image data, the specification of loss should be very careful. The output of encoder is log of sigma instead of sigma, and when taking log 1e-12 can be added to avoid getting infinity.
+
+In DCGAN, the generator is relatively harder to train than the discriminator, in fact, the gradients may  vanish because it performs too poor in the beginning. Therefore, G network should be updated multiple times in each training phase, and could use a more complex network. 
+
+# Project 5. Generative modeling - Generator, Descriptor
+
+Codes: https://github.com/Alice86/DeepLearning/tree/master/5_GENnet%20and%20DESnet
+
+In this two models, only one network is required, facilitated by the langevin dynamic to sample from the generating network. 
+
+The coding implementation is similar to that in project 4, only with one more function for lanevin sampling. The use of langevin sampling requires defining a loop inside the computation graph, which can be achieved with tf.while_loop. The input of the langevin sampler is the current latent factors for the generator and the mean image for the descripter, so the former is intialized only once then keeps being updated in the training loop while the later rolled back to the mean image in every training phase. 
+
+The loss functions should be carefuly specified, tf.norm can be used for convenient l2 norm calculation. The training loss for the descripter net is negative, which seems suprising in the beginning. Yet the output of the descripter net is a score for how "real" the input image is, so the difference between the score for the fake and the real is negative. The langevin uses the parameters from the epoch before, in this example there is only one batch in each epoch so setting reuse to True resolve the problem. Otherwise, the updating could use .compute_gradients and then .apply_gradients instead of directly minimizing the loss, with the updated gradients in each batch restored than take mean for the undate after an epoch.
