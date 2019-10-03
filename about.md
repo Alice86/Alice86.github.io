@@ -16,7 +16,7 @@ Prior to that, I graduated from UCLA with a MS degree in Statistics, supervised 
 
 I am particularly interested in structured representation learning via generative learning, attnetion mechansm, graph network, etc., to facilitate the understanding of often unbalanced and noisy industrial data. My ongoing project is on semi-supervised Extreme Label Classification on text data. 
 
-E-mail: wujiayu86@outlook.com / jiayuwu@ucla.edu     
+E-mail: wujiayu86@outlook.com /j iayuwu@ucla.edu  
 Github: [https://github.com/Alice86 ](https://github.com/Alice86 )         
 LinkedIn: [https://www.linkedin.com/in/alice-wu-170146139/](https://www.linkedin.com/in/alice-wu-170146139/)   
 
