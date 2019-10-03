@@ -1,5 +1,5 @@
 # Site settings
-title: STAT Lab @JW
+title: Personal Site @JW
 header-img: "img/cover.jpg"
 tagline: "cn"  
 description: "Jiayu Wu | Exploration & Notes"  
@@ -33,7 +33,7 @@ paginate: 8
 exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
 
 # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-timezone: Asia/Beijing
+timezone: 	America/New_York
 
 # Defaults for posts
 defaults:

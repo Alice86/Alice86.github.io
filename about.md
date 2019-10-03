@@ -20,26 +20,24 @@ E-mail: wujiayu86@outlook.com / jiayuwu@ucla.edu
 Github: [https://github.com/Alice86 ](https://github.com/Alice86 )         
 LinkedIn: [https://www.linkedin.com/in/alice-wu-170146139/](https://www.linkedin.com/in/alice-wu-170146139/)   
 
-**Education**
-
+**Education**          
 09/2017 —— 06/2019    **Master of Science in Statistics** $\qquad$
 GPA: 3.96  $\qquad$   UCLA  
-*Thesis* Leveraging Label Information in Representation Learning for Multi-label Text Classification         
+*Thesis:* Leveraging Label Information in Representation Learning for Multi-label Text Classification         
 · introduce two designs of label-enhanced representation learning: Label-embedding Attention Model (LEAM) and Conditional Variational Document model (CVDM) with application on real-world datasets                 
 · rely on the annotated labels as auxiliary information to guide the learning of task-tangent data representation as well as supervision in classication stage
 
 09/2014 —— 07/2017    **Bachelor of Economics in Statistics**   $\quad$ GPA: 3.91 $\quad$ Rank:1/21  $\quad$  XMU-WISE  
-*Thesis* 中国省域电子商务发展规模及其影响因素 Provincial Development of Chinese E-commerce
+*Thesis:* 中国省域电子商务发展规模及其影响因素 Provincial Development of Chinese E-commerce
 with Related Factors       
 · Analysis based on PCA and Regression on e-commerce development of 31 regions with 12 features in China
 
 
 09/2013 —— 07/2017    **Bachelor of Art in English**  $\quad$ GPA: 3.84 $\quad$ Rank:5/99  $\quad$   XMU-CFLC   
-*Thesis* Pauses in Chinese-English Consecutive Interpreting by Novice Learners 口译初学者汉英交替传译中的停顿        
+*Thesis:* Pauses in Chinese-English Consecutive Interpreting by Novice Learners 口译初学者汉英交替传译中的停顿        
 · Analyzed features of typical pauses to discuss major challenges for interpreting learners with 244 observations of pauses from simulated interpreting experiments
 
-**Working Experience**  
-
+**Working Experience**            
 10/2018-07/2019  Stratifyd Inc., R&D Team, Machine Learning Research Intern        
 07/2019---       Stratifyd Inc., R&D Team, Machine Learning Research Scientist
 
